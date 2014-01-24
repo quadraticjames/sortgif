@@ -1,0 +1,4 @@
+#!/bin/bash
+
+javac uk/ac/cam/jhw51/sortgif/*.java
+jar cfe Gif.jar uk.ac.cam.jhw51.sortgif.GifDemo uk/ac/cam/jhw51/sortgif/*.class
