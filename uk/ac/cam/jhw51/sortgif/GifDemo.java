@@ -10,6 +10,7 @@ import java.util.List;
 
 public class GifDemo {
 	public static void main(String[] args) throws IOException {
+
 		List<Integer> l = new LinkedList<Integer>();
 		for (int i = 0; i < 60; i++) { 
 			l.add(i+5);
@@ -20,7 +21,7 @@ public class GifDemo {
 			i[j] = l.get(j);
 		}
 		String date = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss").format(new Date());
-		Sorter s = new QuickSorter(i,new FrameBuilder(new OutputGif("C:\\Users\\James\\Dropbox\\2013j\\SortGif\\gifs\\" + date + ".gif"))); //or wherever you want output to go
+		Sorter s = new QuickSorter(i,new FrameBuilder(new OutputGif(args[0]))); //or wherever you want output to go
 		s.sort();
 	}
 }
