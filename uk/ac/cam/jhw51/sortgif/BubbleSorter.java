@@ -17,6 +17,7 @@ public class BubbleSorter extends Sorter {
 	Color low_fg = new Color(201,62,247);
 	
 	Color vl = new Color(143,232,0);
+	Color hl = new Color(225,39,242);
 
 	public BubbleSorter(int[] is, FrameBuilder fb) {
 		this.a = is;
@@ -79,6 +80,7 @@ public class BubbleSorter extends Sorter {
 		}
 		bars[higher].setFg(high_fg);
 		bars[lower].setFg(low_fg);
+		d.getLines().add(new HorizontalLine(hl,1,a[higher]));
 		return d;
 	}
 
