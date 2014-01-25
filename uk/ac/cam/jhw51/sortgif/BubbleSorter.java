@@ -13,7 +13,8 @@ public class BubbleSorter extends Sorter {
 	Color std_fg = new Color(0,0,0);
 	Color unsel_bg = new Color(255,255,255);
 	Color unsel_fg = new Color(209,209,209);
-	Color sel_fg = new Color(255,10,10);
+	Color high_fg = new Color(255,10,10);
+	Color low_fg = new Color(201,62,247);
 	
 	Color vl = new Color(143,232,0);
 
@@ -37,7 +38,7 @@ public class BubbleSorter extends Sorter {
 			//ASSERT: [a.length - (1 + passes):a.length] is sorted
 			didSwaps = false;
 			for (int k = 0; k < a.length - (1 + passes); k++) {
-				this.makeFrame(makeData(a.length - passes));
+				this.makeFrame(makeData(a.length - passes,k,k+1));
 				if (a[k] > a[k+1]) {
 					int tmp = a[k]; a[k] = a[k+1]; a[k+1] = tmp;
 					didSwaps = true;
@@ -63,6 +64,22 @@ public class BubbleSorter extends Sorter {
 			lines.add(new VerticalLine(vl,2,i));
 		}
 		return new SortData(bars,lines,9,1,3);
+	}
+	
+	private SortData makeData (int i, int firstComp, int secondComp) {
+		SortData d = makeData(i);
+		Bar[] bars = d.getBars();
+		int higher, lower;
+		if (a[secondComp] >= a[firstComp]) {
+			higher = secondComp;
+			lower = firstComp;
+		} else {
+			higher = firstComp;
+			lower = secondComp;
+		}
+		bars[higher].setFg(high_fg);
+		bars[lower].setFg(low_fg);
+		return d;
 	}
 
 }
