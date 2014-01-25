@@ -1,3 +1,4 @@
+//written by James Wright, jhw51@cam.ac.uk, 2014-01-25
 package uk.ac.cam.jhw51.sortgif;
 
 import java.awt.Color;
@@ -119,7 +120,14 @@ public class HeapSorter extends Sorter {
 	}
 
 	private boolean isRoot(int root, int end) {
-		return (2*root + 1 >= end || (2*root+2 >= end && a[root] >= a[2*root + 1]) || (a[root] >= a[2*root + 1] && a[root] >= a[2*root+2] && isRoot(2*root+1,end) && isRoot(2*root + 2, end))); //i wrote this after superhall so it might not be right
+		if (2*root + 1 >= end) { // 0 child nodes
+			return true;
+		}
+		if (2*root + 2 >= end) { // 1 child node
+			return (a[root] >= a[2*root + 1]);
+		}
+		//2 child nodes
+		return (a[root] >= a[2*root + 1] && a[root] >= a[2*root+2] && isRoot(2*root+1,end) && isRoot(2*root + 2, end));
 	}
 
 }
