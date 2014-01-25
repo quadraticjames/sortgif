@@ -33,16 +33,13 @@ public class BinaryInsertionSorter extends Sorter {
 		this.makeFrame(this.makeData(0));
 		for (int k = 1; k < a.length; k++) {
 			int i = BinarySearch(0, k,a[k]);
-			boolean run_once = false;
-			this.makeFrame(this.makeData(k));
-			int j = k - 1;
-			this.makeFrame(this.makeData(k+1,j+1));
-			while (j >= 0 && a[j] > a[j+1]) {
-				if (run_once) {	this.makeFrame(this.makeData(k+1,j+1)); } else { run_once = true; }
-				int tmp = a[j]; a[j] = a[j+1]; a[j+1] = tmp;
-				j--;
+			if (i != k) {
+				int tmp = a[k];
+				for (int j = k - 1; j > i - 1; j++) {
+					a[j+1] = a[j];
+				}
+				a[i] = tmp;
 			}
-			this.makeFrame(this.makeData(k+1,j+1));
 		}
 		this.makeFrame(this.makeData(a.length));
 	}
