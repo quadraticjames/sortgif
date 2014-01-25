@@ -1,4 +1,4 @@
-package uk.ac.cam.jhw51.sortgif
+package uk.ac.cam.jhw51.sortgif;
 import java.awt.Color;
 
 public class Bar {
