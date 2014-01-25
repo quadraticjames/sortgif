@@ -29,21 +29,35 @@ public class BinaryInsertionSorter extends Sorter {
 		this.endGif();
 	}
 	
-	private void insertSort() throws IOException {
+	private void insertSort() throws IOException {		
 		this.makeFrame(this.makeData(0));
-		for (int i = 1; i < a.length; i++) {
+		for (int k = 1; k < a.length; k++) {
+			int i = BinarySearch(0, k,a[k]);
 			boolean run_once = false;
-			this.makeFrame(this.makeData(i));
-			int j = i - 1;
-			this.makeFrame(this.makeData(i+1,j+1));
+			this.makeFrame(this.makeData(k));
+			int j = k - 1;
+			this.makeFrame(this.makeData(k+1,j+1));
 			while (j >= 0 && a[j] > a[j+1]) {
-				if (run_once) {	this.makeFrame(this.makeData(i+1,j+1)); } else { run_once = true; }
+				if (run_once) {	this.makeFrame(this.makeData(k+1,j+1)); } else { run_once = true; }
 				int tmp = a[j]; a[j] = a[j+1]; a[j+1] = tmp;
 				j--;
 			}
-			this.makeFrame(this.makeData(i+1,j+1));
+			this.makeFrame(this.makeData(k+1,j+1));
 		}
 		this.makeFrame(this.makeData(a.length));
+	}
+	
+	private int BinarySearch (int low, int high, int key) {
+		//source: http://jeffreystedfast.blogspot.co.uk/2007/02/binary-insertion-sort.html
+		int mid;
+		if (low == high) { return low; }
+		mid = low + ((high-low) / 2); //not (high+low)/2 lest we get an integer overflow
+		if (key > a[mid]) {
+			return BinarySearch(mid+1, high, key);
+		} else if (key < a[mid]) {
+			return BinarySearch(low,mid,key);
+		}
+		return mid;
 	}
 	
 	private SortData makeData(int i) {
