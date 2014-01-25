@@ -1,4 +1,3 @@
-//written by James Wright, jhw51@cam.ac.uk, 2014-01-25
 package uk.ac.cam.jhw51.sortgif;
 
 import java.awt.Color;

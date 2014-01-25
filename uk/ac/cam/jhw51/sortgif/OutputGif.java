@@ -1,5 +1,4 @@
 //source: Alastair Bereford, Andrew Rice: http://www.cl.cam.ac.uk/teaching/1314/ProgJava/workbook3star.html
-//adapted by James Wright, jhw51@cam.ac.uk, 2014-01-24
 
 package uk.ac.cam.jhw51.sortgif;
 // Tell the compiler where to find the additional classes used in this file
