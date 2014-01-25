@@ -16,7 +16,9 @@ public class GifDemo {
 		for (int j = 0; j < l.size(); j++) {
 			i[j] = l.get(j);
 		}
-		Sorter s = new HeapSorter(i.clone(),new FrameBuilder(new OutputGif(args[1] + "heap.gif")));
+		Sorter s = new BinaryInsertionSorter(i.clone(),new FrameBuilder(new OutputGif(args[1] + "binaryinsert.gif")));
+		s.sort();
+		s = new HeapSorter(i.clone(),new FrameBuilder(new OutputGif(args[1] + "heap.gif")));
 		s.sort();
 		s = new QuickSorter(i.clone(),new FrameBuilder(new OutputGif(args[1] + "quick.gif")));
 		s.sort();

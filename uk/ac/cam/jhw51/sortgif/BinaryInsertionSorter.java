@@ -38,11 +38,12 @@ public class BinaryInsertionSorter extends Sorter {
 			int i = BinarySearch(0, k,a[k], k);
 			if (i != k) {
 				int tmp = a[k];
-				for (int j = k - 1; j > i - 1; j++) {
+				for (int j = k - 1; j > i - 1; j--) {
 					a[j+1] = a[j];
-					this.makeFrame(makeData_scroll(k+1,j));
+					this.makeFrame(makeData(k+1));
 				}
 				a[i] = tmp;
+				this.makeFrame(makeData_scroll(k+1,i));
 			}
 		}
 		this.makeFrame(this.makeData(a.length));
@@ -50,7 +51,9 @@ public class BinaryInsertionSorter extends Sorter {
 
 	private int BinarySearch (int low, int high, int key, int k) throws IOException {
 		//source: http://jeffreystedfast.blogspot.co.uk/2007/02/binary-insertion-sort.html
-		if (low == high) { return low; }
+		if (low == high) { 
+			this.makeFrame(makeData_search(k,low,true));
+			return low; }
 		int mid = low + ((high-low) / 2); //not (high+low)/2 lest we get an integer overflow
 		this.makeFrame(makeData_search(k,mid,false));
 		if (key > a[mid]) {
@@ -74,6 +77,9 @@ public class BinaryInsertionSorter extends Sorter {
 		bars[k].setFg(sel_fg);
 		if (found) {
 			bars[search].setFg(found_fg);
+			if (search > 0) {
+				bars[search-1].setFg(found_fg);
+			}
 		} else {
 			bars[search].setFg(comp_fg);
 		}
